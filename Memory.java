@@ -150,4 +150,44 @@ public class Memory {
         printFaultCount(faultCount, name);
 
     }
+
+    public void Optimal(){
+        String name = "Optimal";
+        printinit(name);//printing statement
+        int faultCount = 0, max = 0;
+        Page victim = new Page(-1);
+        for (int i = 0; i < referenceList.size(); i++) {
+            printMemoryContents();//printing statement
+            int pageID = referenceList.get(i);
+            if(pageInMemory(pageID))
+                printHit(pageID);//printing statement
+            else{
+                printFault(pageID);//printing statement
+                faultCount++;
+
+                if(fullMemory())
+                {
+                    for(Page p : memory)
+                    {
+                        for (int j = i+1; j < referenceList.size(); j++)
+                        {
+                            if((j-i) > max)
+                                max++;
+                            if(p.getID() == referenceList.get(j))
+                            {
+                                if((j-i) >= max)
+                                    victim = p;
+                                break;
+                            }
+                            if((j == referenceList.size()-1 && p.getID() != referenceList.get(j)))
+                                victim = p;
+                        }
+                    }
+                    memory.remove(victim);
+                }
+                insertPage(pageID);
+            }
+        }
+        printFaultCount(faultCount, name);
+    }
 }

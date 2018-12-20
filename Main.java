@@ -16,5 +16,6 @@ public class Main {
         }
         Memory m = new Memory(5, list);
         m.FIFO();
+        m.Optimal();
     }
 }

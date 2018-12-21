@@ -222,7 +222,7 @@ public class Memory {
      * do so using the removeLastRefrenced function
      */
     public void LRU(){
-        String name = "Last Recently Used";
+        String name = "Least Recently Used";
         printinit(name);
         int counter = 0;
         int faultCount = 0;
@@ -265,7 +265,7 @@ public class Memory {
      * if no place remove the least used and add a new one with frequency equals 1
      */
     public void LFU() {
-        String name = "Last Frequently Used";
+        String name = "Least Frequently Used";
         printinit(name);
         int faultCount = 0;
         for (int i = 0; i < referenceList.size(); i++) {

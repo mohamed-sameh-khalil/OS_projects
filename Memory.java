@@ -63,6 +63,7 @@ public class Memory {
      * @param algorithmName the name of the algorithm you are implementing
      */
     private void printinit(String algorithmName){
+        memory.clear();
         System.out.println("*********" + algorithmName + "*********");
         System.out.println("Memory size: " + memorySize + " pages");
         System.out.println("Reference String: ");
@@ -204,7 +205,7 @@ public class Memory {
                 faultCount++;
 
                 if(fullMemory())
-                   memory.remove(0);
+                   printVictimPage(memory.remove(0).getID());
 
                 insertPage(pageID);
             }
@@ -246,6 +247,7 @@ public class Memory {
                                 victim = p;
                         }
                     }
+                    printVictimPage(victim.getID());
                     memory.remove(victim);
                 }
                 insertPage(pageID);

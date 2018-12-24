@@ -9,17 +9,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Random rand = new Random();
-        final int pageLimit = 100;
-        final int referenceStringSize = 100;
-        final int memorySize = rand.nextInt(20) + 1;
-
         System.out.println("***Welcome to the page replacement algorithms simulator***\n");
+
+        Random rand = new Random();
+        final int pageIDLimit = 100;
+        final int referenceStringSize = readInt("references");
+        final int memorySize = readInt("memory frames");
 
         List<Integer> list = new ArrayList<Integer>(referenceStringSize);
 
         for (int i = 0; i < referenceStringSize; i++) {
-            list.add(rand.nextInt(pageLimit));
+            list.add(rand.nextInt(pageIDLimit));
         }
 
         Memory m = new Memory(memorySize, list);
@@ -66,5 +66,9 @@ public class Main {
                 System.exit(0);
 
         }
+    }
+    private static int readInt(String parameterName){
+        System.out.print("Please enter how many "+ parameterName +" you want to simulate:");
+        return Math.max(1,new Scanner(System.in).nextInt());
     }
 }

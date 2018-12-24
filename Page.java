@@ -4,8 +4,7 @@ public class Page {
     private int ID;
     private boolean rBit = true;//reference bit
     private boolean mBit = false;//modification bit
-    private long lastReference;//for the LRU
-    private long useCount = 0;
+    private long lastReference;//represents time for LRU and count for LFU
 
     Page(int ID){
         this.ID = ID;
@@ -32,14 +31,6 @@ public class Page {
 
     public void setLastReference(long currentTime) {
         this.lastReference = currentTime;
-    }
-
-    public long getUseCount() {
-        return useCount;
-    }
-
-    public void incrementUseCount() {
-        useCount++;
     }
 
     public int getID() {
